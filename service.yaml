@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wisecow-service
+spec:
+  selector:
+    app: wisecow  # Label selector to match pods managed by your deployment
+  ports:
+    - protocol: TCP
+      port: 80  # Port for accessing the service externally
+      targetPort: 8080  # Port on the container where the Wisecow application is listening
+      nodePort: 30000  # Specify the node port (adjust as needed, within range 30000-32767)
+  type: NodePort  # Exposes the service on each Node's IP at a static port
+

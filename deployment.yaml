@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wisecow-deployment
+  labels:
+    app: wisecow
+spec:
+  replicas: 3  # Adjust as needed based on your application requirements
+  selector:
+    matchLabels:
+      app: wisecow
+  template:
+    metadata:
+      labels:
+        app: wisecow
+    spec:
+      containers:
+        - name: wisecow
+          image: aarifsh/wisecow:latest  # Replace with your actual Docker Hub image
+          ports:
+            - containerPort: 8080  # Adjust based on your application's port
+          # Add environment variables or volume mounts if necessary
+
